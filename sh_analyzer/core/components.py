@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import cv2
 import numpy as np
 
+from .morphology import max_inscribed_diameter_px
 
 @dataclass
 class Component:
@@ -44,7 +45,7 @@ def find_components(mask: np.ndarray,
             per = float(cv2.arcLength(c, True))
             hull = float(cv2.contourArea(cv2.convexHull(c)))
             solidity = a / hull if hull > 0 else 0.0
-            circ = float(4 * math.pi * a / per ** 2) if per > 0 else 0.0
+            width = max_inscribed_diameter_px(crop)
             width = float(2 * cv2.distanceTransform(crop, cv2.DIST_L2, 3).max())
             contour = c.astype(np.int32) + np.array([x, y], np.int32)
         else:

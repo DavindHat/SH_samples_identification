@@ -44,3 +44,16 @@ def remove_small(mask: np.ndarray, min_area_px: int) -> np.ndarray:
 
 def as_mask(condition: np.ndarray) -> np.ndarray:
     return condition.astype(np.uint8) * 255
+
+def max_inscribed_diameter_px(mask: np.ndarray) -> float:
+    """Диаметр максимальной вписанной окружности, px.
+
+    Нулевой бордюр обязателен: если crop целиком foreground,
+    distanceTransform без него возвращает мусор (overflow).
+    """
+    if mask.size == 0 or not mask.any():
+        return 0.0
+    m = as_mask(mask)
+    padded = cv2.copyMakeBorder(m, 1, 1, 1, 1, cv2.BORDER_CONSTANT, value=0)
+    dist = cv2.distanceTransform(padded, cv2.DIST_L2, 3)
+    return float(dist.max()) * 2.0     # сначала в Python float, потом умножаем
