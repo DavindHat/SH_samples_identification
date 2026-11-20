@@ -10,15 +10,16 @@ samples:
   min_area_mm2: 300
   close_mm: 2.0
   edge_margin_mm: 1.5
-  band_dark_ratio: 0.45
+  band_dark_ratio: 0.50
   band_open_mm: 2.0
   band_dilate_mm: 0.5
   split_max_erosion_mm: 15.0
   split_step_mm: 0.5
   exclude_top_fraction: 0.15
+  exclude_bottom_fraction: 0.15
 
 spots:
-  warmth_min: 8
+  warmth_min: 10
   open_mm: 0.10
   merge_gap_mm: 1.00
   fill_internal_holes: true

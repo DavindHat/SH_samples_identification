@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 import cv2
+import numpy as np
 
 from .contracts.config import Config
 from .contracts.result import Sample, ScanResult

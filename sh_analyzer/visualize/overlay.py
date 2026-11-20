@@ -22,11 +22,16 @@ def draw_overlay(bgr: np.ndarray, samples: list[Sample], cfg: Config, mm_per_px:
         cv2.putText(out, f"Sample #{sm.index}", (x + 5, y + 25),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
 
-        # Рисуем контур активной зоны (синий пунктир)
+        # Активная зона: полупрозрачный синий слой + оранжевый контур
         if active_masks and idx < len(active_masks):
             act = active_masks[idx]
-            cnts, _ = cv2.findContours(act.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            cv2.drawContours(out, cnts, -1, (255, 0, 0), max(1, mm_to_px(0.2, s)), lineType=cv2.LINE_8)
+            if act.any():
+                overlay = out.copy()
+                overlay[act > 0] = [255, 0, 0]
+                cv2.addWeighted(overlay, 0.2, out, 0.8, 0, out)
+
+                cnts, _ = cv2.findContours(act.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                cv2.drawContours(out, cnts, -1, (255, 100, 0), max(1, mm_to_px(0.3, s)))
 
         for z in sm.zones:
             color = (0, 0, 255) if "possibly_merged" not in z.flags else (0, 140, 255)

@@ -27,10 +27,11 @@ class SampleConfig(BaseModel):
     split_max_erosion_mm: float = 15.0
     split_step_mm: float = 0.5
     exclude_top_fraction: float = 0.15
+    exclude_bottom_fraction: float = 0.15
 
 
 class SpotConfig(BaseModel):
-    warmth_min: int = 8
+    warmth_min: int = 10
     open_mm: float = 0.10
     merge_gap_mm: float = 1.00
     fill_internal_holes: bool = True
