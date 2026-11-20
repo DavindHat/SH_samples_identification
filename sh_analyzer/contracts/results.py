@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Iterator
 
 from pydantic import BaseModel, Field
@@ -17,8 +18,8 @@ class Zone(BaseModel):
     center_px: tuple[int, int]
 
     area_mm2: float
-    area_px: int                       # площадь всего пятна до деления
-    n_events: int = 1                  # >1 только при ручном указании слипшихся
+    area_px: int
+    n_events: int = 1
     d_eq_mm: float
     circularity: float | None = None
     max_width_mm: float | None = None
@@ -80,8 +81,7 @@ class ScanResult(BaseModel):
             for z in sm.zones:
                 yield sm, z
 
-    def save_json(self, path: str) -> None:
-        from pathlib import Path
+    def save_json(self, path: str | Path) -> None:
         p = Path(path)
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(self.model_dump_json(indent=2), encoding="utf-8")
