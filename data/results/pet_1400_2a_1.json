@@ -1,0 +1,477 @@
+{
+  "schema_version": "1.0",
+  "analyzer_version": "0.1.0",
+  "file": "data\\scans\\pet_1400_2a_1.jpg",
+  "sha256": "804cb9242378aa5cf191b0bb03d82f7784f44caf98a6a23ae6df341ad25ec0f5",
+  "image_size_px": [
+    2550,
+    3509
+  ],
+  "mm_per_px": 0.08466666666666667,
+  "scale_source": "ruler",
+  "session_id": null,
+  "acquired_at": null,
+  "analyzed_at": "2026-11-20T15:35:48.695313Z",
+  "device": {},
+  "scan_profile": {},
+  "n_samples": 1,
+  "n_zones": 3,
+  "samples": [
+    {
+      "index": 1,
+      "label": null,
+      "sample_id": null,
+      "centroid_px": [
+        1045,
+        1411
+      ],
+      "tilt_deg": -1.55,
+      "area_mm2": 10996.76,
+      "active_area_mm2": 9144.44,
+      "bbox_px": [
+        589,
+        482,
+        897,
+        1902
+      ],
+      "n_zones": 3,
+      "total_zone_area_mm2": 24.0501,
+      "zone_area_fraction": 0.00263,
+      "zones": [
+        {
+          "id": 1,
+          "x_mm": 0.021,
+          "y_mm": -2.452,
+          "center_px": [
+            1046,
+            1440
+          ],
+          "area_mm2": 13.7347,
+          "area_px": 1916,
+          "n_events": 1,
+          "d_eq_mm": 4.182,
+          "circularity": 0.677,
+          "max_width_mm": 2.889,
+          "solidity": 0.895,
+          "warm_mean": 22.6,
+          "bbox_mm": [
+            -1.7120589724611721,
+            -5.005138155552949,
+            1.7854929443438727,
+            0.3634382826259455
+          ],
+          "bbox_px": [
+            1025,
+            1406,
+            42,
+            66
+          ],
+          "contour_mm": [
+            [
+              1.147,
+              0.363
+            ],
+            [
+              0.715,
+              0.036
+            ],
+            [
+              -0.216,
+              0.062
+            ],
+            [
+              -1.172,
+              -0.844
+            ],
+            [
+              -1.019,
+              -1.441
+            ],
+            [
+              -1.712,
+              -2.015
+            ],
+            [
+              -1.671,
+              -3.626
+            ],
+            [
+              -0.777,
+              -5.005
+            ],
+            [
+              1.088,
+              -4.971
+            ],
+            [
+              1.161,
+              -2.263
+            ],
+            [
+              1.785,
+              -1.094
+            ]
+          ],
+          "contour_px": [
+            [
+              1058,
+              1406
+            ],
+            [
+              1053,
+              1410
+            ],
+            [
+              1042,
+              1410
+            ],
+            [
+              1031,
+              1421
+            ],
+            [
+              1033,
+              1428
+            ],
+            [
+              1025,
+              1435
+            ],
+            [
+              1026,
+              1454
+            ],
+            [
+              1037,
+              1470
+            ],
+            [
+              1059,
+              1469
+            ],
+            [
+              1059,
+              1437
+            ],
+            [
+              1066,
+              1423
+            ]
+          ],
+          "confidence": 0.95,
+          "flags": []
+        },
+        {
+          "id": 2,
+          "x_mm": 1.412,
+          "y_mm": -25.869,
+          "center_px": [
+            1070,
+            1716
+          ],
+          "area_mm2": 0.767,
+          "area_px": 107,
+          "n_events": 1,
+          "d_eq_mm": 0.988,
+          "circularity": 0.441,
+          "max_width_mm": 0.625,
+          "solidity": 0.634,
+          "warm_mean": 10.7,
+          "bbox_mm": [
+            1.0434019883370793,
+            -26.914446305692675,
+            1.805123024309746,
+            -24.970116665395544
+          ],
+          "bbox_px": [
+            1065,
+            1705,
+            10,
+            24
+          ],
+          "contour_mm": [
+            [
+              1.478,
+              -24.97
+            ],
+            [
+              1.043,
+              -25.382
+            ],
+            [
+              1.29,
+              -25.643
+            ],
+            [
+              1.341,
+              -26.914
+            ],
+            [
+              1.547,
+              -25.565
+            ],
+            [
+              1.805,
+              -25.402
+            ]
+          ],
+          "contour_px": [
+            [
+              1070,
+              1705
+            ],
+            [
+              1065,
+              1710
+            ],
+            [
+              1068,
+              1713
+            ],
+            [
+              1069,
+              1728
+            ],
+            [
+              1071,
+              1712
+            ],
+            [
+              1074,
+              1710
+            ]
+          ],
+          "confidence": 0.6,
+          "flags": []
+        },
+        {
+          "id": 3,
+          "x_mm": 3.745,
+          "y_mm": -25.937,
+          "center_px": [
+            1097,
+            1716
+          ],
+          "area_mm2": 9.5484,
+          "area_px": 1332,
+          "n_events": 1,
+          "d_eq_mm": 3.487,
+          "circularity": 0.528,
+          "max_width_mm": 2.264,
+          "solidity": 0.758,
+          "warm_mean": 14.8,
+          "bbox_mm": [
+            1.9743943656370053,
+            -28.257286484570397,
+            5.570203289812382,
+            -23.574835178474544
+          ],
+          "bbox_px": [
+            1076,
+            1688,
+            44,
+            56
+          ],
+          "contour_mm": [
+            [
+              3.125,
+              -23.575
+            ],
+            [
+              2.606,
+              -23.984
+            ],
+            [
+              2.846,
+              -24.499
+            ],
+            [
+              1.974,
+              -25.407
+            ],
+            [
+              2.894,
+              -25.855
+            ],
+            [
+              2.834,
+              -28.056
+            ],
+            [
+              4.015,
+              -28.257
+            ],
+            [
+              4.378,
+              -27.335
+            ],
+            [
+              5.57,
+              -27.114
+            ],
+            [
+              5.239,
+              -26.851
+            ],
+            [
+              5.268,
+              -25.75
+            ],
+            [
+              4.349,
+              -25.302
+            ],
+            [
+              4.223,
+              -23.689
+            ]
+          ],
+          "contour_px": [
+            [
+              1089,
+              1688
+            ],
+            [
+              1083,
+              1693
+            ],
+            [
+              1086,
+              1699
+            ],
+            [
+              1076,
+              1710
+            ],
+            [
+              1087,
+              1715
+            ],
+            [
+              1087,
+              1741
+            ],
+            [
+              1101,
+              1743
+            ],
+            [
+              1105,
+              1732
+            ],
+            [
+              1119,
+              1729
+            ],
+            [
+              1115,
+              1726
+            ],
+            [
+              1115,
+              1713
+            ],
+            [
+              1104,
+              1708
+            ],
+            [
+              1102,
+              1689
+            ]
+          ],
+          "confidence": 0.8,
+          "flags": []
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "warnings": [
+    "Автокалибровка по линейке не удалась, используется DPI"
+  ],
+  "artifacts": {
+    "overlay": "data\\results\\pet_1400_2a_1_overlay.png"
+  },
+  "timings_ms": {
+    "load": 30.8,
+    "ruler": 324.4,
+    "samples": 292.1,
+    "spots": 575.0
+  },
+  "config": {
+    "scale": {
+      "dpi": 300.0,
+      "mm_per_px": null,
+      "auto_ruler": true,
+      "ruler_max_deviation": 0.02
+    },
+    "samples": {
+      "exclude_left_frac": 0.1,
+      "expected": null,
+      "min_area_mm2": 300.0,
+      "close_mm": 2.0,
+      "edge_margin_mm": 1.5,
+      "band_dark_ratio": 0.45,
+      "band_open_mm": 2.0,
+      "band_dilate_mm": 0.5,
+      "split_max_erosion_mm": 15.0,
+      "split_step_mm": 0.5
+    },
+    "spots": {
+      "warmth_min": 8,
+      "open_mm": 0.1,
+      "merge_gap_mm": 0.5,
+      "fill_internal_holes": true,
+      "min_diameter_mm": 0.5,
+      "max_area_mm2": 300.0,
+      "min_solidity": 0.3,
+      "shape_filter_min_px": 60,
+      "possibly_merged_area_mm2": 4.0,
+      "possibly_merged_solidity": 0.55,
+      "allow_light_only": false
+    },
+    "halo": {
+      "enabled": false,
+      "delta": 14,
+      "open_mm": 0.15,
+      "close_mm": 0.3,
+      "bg_window_mm": 12.0,
+      "min_area_mm2": 0.2,
+      "max_area_mm2": 300.0
+    },
+    "ruler": {
+      "strip_frac": 0.12,
+      "max_tilt_deg": 6.0,
+      "tilt_step_deg": 0.5,
+      "edge_band_frac": 0.28,
+      "min_ticks": 25,
+      "max_spacing_cv": 0.25,
+      "tick_units_mm": [
+        0.5,
+        1.0,
+        2.0,
+        5.0,
+        10.0
+      ]
+    },
+    "frame": {
+      "mode": "sample",
+      "include_contours": true,
+      "contour_eps_mm": 0.15
+    },
+    "output": {
+      "save_overlay": true,
+      "overlay_max_side": 2200,
+      "save_json": true,
+      "save_debug_masks": true,
+      "save_csv": true,
+      "save_xlsx": true
+    },
+    "perf": {
+      "resize_max_side": null,
+      "bg_downscale": 8,
+      "workers": 2
+    }
+  }
+}

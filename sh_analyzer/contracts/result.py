@@ -10,8 +10,6 @@ from ..version import SCHEMA_VERSION, __version__
 
 
 class Zone(BaseModel):
-    """Одна зона СВ. Площадь = площадь цветного пятна / n_events."""
-
     id: int
     x_mm: float
     y_mm: float
@@ -29,6 +27,7 @@ class Zone(BaseModel):
     bbox_mm: tuple[float, float, float, float] | None = None
     bbox_px: tuple[int, int, int, int] | None = None
     contour_mm: list[tuple[float, float]] | None = None
+    contour_px: list[tuple[int, int]] | None = None  # НОВОЕ ПОЛЕ
 
     confidence: float = 0.0
     flags: list[str] = Field(default_factory=list)

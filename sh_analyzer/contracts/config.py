@@ -26,12 +26,13 @@ class SampleConfig(BaseModel):
     band_dilate_mm: float = 0.5
     split_max_erosion_mm: float = 15.0
     split_step_mm: float = 0.5
+    exclude_top_fraction: float = 0.15
 
 
 class SpotConfig(BaseModel):
     warmth_min: int = 8
     open_mm: float = 0.10
-    merge_gap_mm: float = 0.50
+    merge_gap_mm: float = 1.00
     fill_internal_holes: bool = True
     min_diameter_mm: float = 0.5
     max_area_mm2: float = 300.0
@@ -76,7 +77,7 @@ class OutputConfig(BaseModel):
     save_overlay: bool = True
     overlay_max_side: int = 2200
     save_json: bool = True
-    save_debug_masks: bool = False
+    save_debug_masks: bool = True
     save_csv: bool = True
     save_xlsx: bool = True
 
@@ -119,6 +120,5 @@ class Config(BaseModel):
         )
 
 
-# алиасы множественного числа (используются в новых модулях)
 SamplesConfig = SampleConfig
 SpotsConfig = SpotConfig
