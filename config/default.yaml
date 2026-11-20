@@ -1,0 +1,54 @@
+profile_name: default
+
+scale:
+  mm_per_px: null          # если задан — приоритет над dpi
+  dpi: 300
+  ruler_auto: true         # автокалибровка по линейке
+  ruler_tolerance: 0.02    # расхождение >2% -> предупреждение
+  ruler_strip_frac: 0.12   # левая полоса поиска линейки
+
+samples:
+  exclude_left_frac: 0.10  # полоса линейки, исключаемая из поиска образцов
+  expected_samples: null   # 1 / 4 / null=авто
+  min_area_mm2: 300.0
+  close_mm: 2.0
+  edge_margin_mm: 1.5
+  band_dark_ratio: 0.45
+  band_open_mm: 2.0
+  split_max_erosion_mm: 15.0
+
+spots:                     # ОСНОВНОЙ детектор: пятно прожога (R-B)
+  warmth_min: 8
+  open_mm: 0.10
+  merge_gap_mm: 0.50       # дольки ближе -> одна зона
+  fill_internal_holes: true
+  min_diameter_mm: 0.5
+  max_area_mm2: 300.0
+  min_solidity: 0.30
+  shape_filter_min_px: 60
+  possibly_merged_area_mm2: 4.0
+  possibly_merged_solidity: 0.55
+
+halo:                      # вспомогательный: светлое поле (диагностика)
+  enabled: false
+  delta: 14
+  open_mm: 0.15
+  close_mm: 0.30
+  bg_window_mm: 12.0
+  allow_light_only: false
+
+frame:
+  mode: sample             # sample | scan
+  y_up: true
+
+output:
+  save_overlay: true
+  overlay_max_side: 2200
+  save_debug_masks: false
+  include_contours: true
+  contour_eps_mm: 0.15
+  save_json: true
+
+perf:
+  resize_max_side: null    # напр. 3500 для ускорения на 600 dpi
+  workers: 2
