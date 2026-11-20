@@ -1,7 +1,20 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import cv2
 import numpy as np
+
+
+def as_mask(mask: np.ndarray) -> np.ndarray:
+    """bool / 0-1 / 0-255 -> uint8 0/255."""
+    if mask.dtype == np.bool_:
+        return mask.astype(np.uint8) * 255
+    m = mask
+    if m.ndim == 3:
+        m = cv2.cvtColor(m, cv2.COLOR_BGR2GRAY)
+    m = m.astype(np.uint8, copy=False)
+    if m.max() <= 1:
+        m = m * 255
+    return m
 
 
 def disk(radius_px: int) -> np.ndarray:
@@ -9,51 +22,39 @@ def disk(radius_px: int) -> np.ndarray:
     return cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * r + 1, 2 * r + 1))
 
 
-def open_mask(mask: np.ndarray, radius_px: int) -> np.ndarray:
-    return cv2.morphologyEx(mask, cv2.MORPH_OPEN, disk(radius_px))
+def open_disk(mask: np.ndarray, r: int) -> np.ndarray:
+    return cv2.morphologyEx(as_mask(mask), cv2.MORPH_OPEN, disk(r))
 
 
-def close_mask(mask: np.ndarray, radius_px: int) -> np.ndarray:
-    return cv2.morphologyEx(mask, cv2.MORPH_CLOSE, disk(radius_px))
+def close_disk(mask: np.ndarray, r: int) -> np.ndarray:
+    return cv2.morphologyEx(as_mask(mask), cv2.MORPH_CLOSE, disk(r))
 
 
-def erode(mask: np.ndarray, radius_px: int) -> np.ndarray:
-    return cv2.erode(mask, disk(radius_px))
+def erode_disk(mask: np.ndarray, r: int) -> np.ndarray:
+    return cv2.erode(as_mask(mask), disk(r))
 
 
-def dilate(mask: np.ndarray, radius_px: int) -> np.ndarray:
-    return cv2.dilate(mask, disk(radius_px))
+def dilate_disk(mask: np.ndarray, r: int) -> np.ndarray:
+    return cv2.dilate(as_mask(mask), disk(r))
 
 
 def fill_holes(mask: np.ndarray) -> np.ndarray:
-    """Заливает внутренние дырки (блёстки, просветы внутри пятна)."""
-    cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    out = np.zeros_like(mask)
+    """Заполняет все внутренние дырки (блики, надписи, зоны СВ)."""
+    m = as_mask(mask)
+    cnts, _ = cv2.findContours(m, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    out = np.zeros_like(m)
     cv2.drawContours(out, cnts, -1, 255, -1)
     return out
 
 
-def remove_small(mask: np.ndarray, min_area_px: int) -> np.ndarray:
-    n, lab, stats, _ = cv2.connectedComponentsWithStats(mask, 8)
-    out = np.zeros_like(mask)
-    for i in range(1, n):
-        if stats[i, cv2.CC_STAT_AREA] >= min_area_px:
-            out[lab == i] = 255
-    return out
-
-
-def as_mask(condition: np.ndarray) -> np.ndarray:
-    return condition.astype(np.uint8) * 255
-
 def max_inscribed_diameter_px(mask: np.ndarray) -> float:
     """Диаметр максимальной вписанной окружности, px.
 
-    Нулевой бордюр обязателен: если crop целиком foreground,
-    distanceTransform без него возвращает мусор (overflow).
+    Нулевой бордюр обязателен: без него distanceTransform на crop,
+    целиком заполненном foreground, возвращает мусор (overflow).
     """
     if mask.size == 0 or not mask.any():
         return 0.0
-    m = as_mask(mask)
-    padded = cv2.copyMakeBorder(m, 1, 1, 1, 1, cv2.BORDER_CONSTANT, value=0)
+    padded = cv2.copyMakeBorder(as_mask(mask), 1, 1, 1, 1, cv2.BORDER_CONSTANT, value=0)
     dist = cv2.distanceTransform(padded, cv2.DIST_L2, 3)
-    return float(dist.max()) * 2.0     # сначала в Python float, потом умножаем
+    return float(dist.max()) * 2.0
